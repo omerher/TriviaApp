@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TriviaXamarinApp.Views.MainPage" NavigationPage.HasBackButton="False" Title="Play">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Profile"
+                 Order="Primary"
+                 Priority="0"
+                 Command="{Binding ProfileCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Padding="{StaticResource PagePadding}" BackgroundColor="{DynamicResource background}">
+            <Label TextColor="{DynamicResource primaryText}" FontSize="Medium" >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Current score: " />
+                        <Span Text="{Binding Score}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label TextColor="{DynamicResource primaryText}" FontSize="Medium" >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Question: " />
+                        <Span Text="{Binding QuestionText}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label TextColor="{DynamicResource primaryText}" FontSize="Medium" Margin="0,0,0,10">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Submitted by: " />
+                        <Span Text="{Binding Author}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Button x:Name="b1" Text="{Binding OtherAnswers[0]}" Command="{Binding SelectedCommand}" CommandParameter="0" FontSize="Medium"
+                    TextColor="{DynamicResource primaryText}" BackgroundColor="{DynamicResource menu}" />
+            <Button x:Name="b2" Text="{Binding OtherAnswers[1]}" Command="{Binding SelectedCommand}" CommandParameter="1" FontSize="Medium"
+                    TextColor="{DynamicResource primaryText}" BackgroundColor="{DynamicResource menu}" />
+            <Button x:Name="b3" Text="{Binding OtherAnswers[2]}" Command="{Binding SelectedCommand}" CommandParameter="2" FontSize="Medium"
+                    TextColor="{DynamicResource primaryText}" BackgroundColor="{DynamicResource menu}"/>
+            <Button x:Name="b4" Text="{Binding OtherAnswers[3]}" Command="{Binding SelectedCommand}" CommandParameter="3" FontSize="Medium"
+                    TextColor="{DynamicResource primaryText}" BackgroundColor="{DynamicResource menu}" />
+
+            <!--<Button Margin="0,20,0,0" Text="Profile" Clicked="Profile_Click" TextColor="{DynamicResource primaryText}" BackgroundColor="{DynamicResource menu}"/>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

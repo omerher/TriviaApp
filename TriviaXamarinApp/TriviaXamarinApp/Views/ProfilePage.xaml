@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TriviaXamarinApp.Views.ProfilePage" Title="Profile">
+    <ContentPage.Content>
+        <ScrollView Padding="{StaticResource PagePadding}" BackgroundColor="{DynamicResource background}">
+            <StackLayout>
+                <Label IsVisible="{Binding LoggedOut}" Text="Uh oh! Looks like you are not logged in!" TextColor="{DynamicResource primaryText}" />
+                <Button IsVisible="{Binding LoggedOut}" Command="{Binding LoginCommand}" Text="Login" TextColor="{DynamicResource primaryText}" BackgroundColor="{DynamicResource menu}" />
+                <Button Margin="0,0,0,10" Text="Logout" Command="{Binding LogoutCommand}" IsVisible="{Binding LoggedIn}" TextColor="{DynamicResource primaryText}" BackgroundColor="{DynamicResource menu}" />
+
+                <Label TextColor="{DynamicResource primaryText}" HorizontalOptions="CenterAndExpand" IsVisible="{Binding LoggedIn}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Username: " />
+                            <Span Text="{Binding Name}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label TextColor="{DynamicResource primaryText}" HorizontalOptions="CenterAndExpand" IsVisible="{Binding LoggedIn}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Email: " />
+                            <Span Text="{Binding Email}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label TextColor="{DynamicResource primaryText}" HorizontalOptions="CenterAndExpand" IsVisible="{Binding LoggedIn}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Password: " />
+                            <Span Text="{Binding Password}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <CollectionView ItemsSource="{Binding Questions}" x:Name="QuestionsView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItem IconImageSource="trash_white.png" Command="{Binding Source={x:Reference QuestionsView}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding}"/>
+                                    <SwipeItem IconImageSource="edit.png" Command="{Binding Source={x:Reference QuestionsView}, Path=BindingContext.EditCommand}" CommandParameter="{Binding}"/>
+                                </SwipeView.LeftItems>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Grid.Row="0" TextColor="{DynamicResource primaryText}"
+                                Text="{Binding QText}" />
+                                    <Label Grid.Column="0" Grid.Row="1" TextColor="{DynamicResource secondaryText}"
+                                Text="{Binding CorrectAnswer}" />
+                                </Grid>
+                            </SwipeView>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

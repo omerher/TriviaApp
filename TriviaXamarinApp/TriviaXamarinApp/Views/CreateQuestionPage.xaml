@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TriviaXamarinApp.Views.CreateQuestionPage" Title="Add Question">
+    <ContentPage.Content>
+        <StackLayout Padding="{StaticResource PagePadding}" BackgroundColor="{DynamicResource background}">
+            <Label Text="Enter your question:" TextColor="{DynamicResource secondaryText}" />
+            <Entry Text="{Binding QText}" TextColor="{DynamicResource primaryText}" />
+            <Label Text="Enter the correct answer:" TextColor="{DynamicResource secondaryText}" />
+            <Entry Text="{Binding CorrectAnswer}" TextColor="{DynamicResource primaryText}" />
+            <Label Text="Enter other answers:" TextColor="{DynamicResource secondaryText}" />
+            <Entry Text="{Binding OtherAnswers[0]}" TextColor="{DynamicResource primaryText}" />
+            <Entry Text="{Binding OtherAnswers[1]}" TextColor="{DynamicResource primaryText}" />
+            <Entry Text="{Binding OtherAnswers[2]}" TextColor="{DynamicResource primaryText}" />
+
+            <Button Text="Submit Question" Command="{Binding SubmitCommand}" TextColor="{DynamicResource primaryText}" BackgroundColor="{DynamicResource menu}" />
+            <Label Text="{Binding ErrorMessage}" TextColor="Red" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
